@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing Game</title>
+</head>
+<body>
+<script>
+    let array = [];
+    for (let i = 0; i <= 100; i++) {
+        array.push(i);
+    }
+
+    let num = Number(prompt("Enter the number"));
+
+    function findNumber(arr,length, num, begin) {
+        let result;
+        for (let i = begin; i < length; i++) {
+            if (num === arr[i]) {
+                result = arr[i];
+                return result;
+            }
+        }
+
+    }
+
+    console.log(findNumber(array,array.length, num, 0));
+
+    function findNumberBinary(arr, num) {
+        if(num <= arr.length/2){
+            console.log(findNumber(arr,arr.length,num,0));
+        } else {
+            console.log(findNumber(arr,arr.length,num,parseInt(arr.length/2)))
+        }
+    }
+
+findNumberBinary(array, num);
+
+</script>
+</body>
+</html>

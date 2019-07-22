@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+<div>
+    <h2>Add New Product</h2>
+    <input id="newProduct" value="">
+    <button id="addProduct" onclick="addProduct()">Add</button>
+    <table id="listProduct"></table>
+</div>
+<h2>Display All Product</h2>
+<h3>Product Name</h3>
+<p id="table"/>
+<script>
+    let b = document.getElementById("table");
+    let arrProduct = ["Apple", "Banana", "Orange"];
+    let data = "";
+
+    function addProduct() {
+        let product = document.getElementById("newProduct").value;
+        if (product === undefined) {
+            alert("please enter the product");
+        } else {
+            arrProduct.push(product);
+            alert("You just add " + product + " to the list");
+            data = "";
+            display();
+        }
+        document.getElementById("newProduct").value = "";
+    }
+
+    // hien thi tren man hinh
+    function display() {
+        data += "<table>";
+        for (i = 0; i < arrProduct.length; i++) {
+            data += "<tr>";
+            data += "<td><input id='" + i + "' type='text' value= " + arrProduct[i] + "></td>";
+            data += "<td><input type='button' onclick='edit(" + i + ")' value='Edit'></td>";
+            data += "<td><input type='button' onclick='deleteProduct(" + i + ")' value='Delete'></td>";
+            data += "</tr>"
+        }
+        data += "</table>";
+        b.innerHTML = data;
+    }
+
+    function edit(id) {
+        arrProduct.push(document.getElementById(id).value);
+        alert("You just edit the product")
+    }
+
+    function deleteProduct(id) {
+        for(let i=0; i < arrProduct.length; i++) {
+
+            arrProduct[id] = arrProduct[id+1]
+        }
+        arrProduct.pop(arrProduct[arrProduct.length-1]);
+        console.log(arrProduct);
+        data = "";
+        display();
+
+    }
+
+    display();
+
+</script>
+</body>
+</html>

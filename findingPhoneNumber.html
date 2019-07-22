@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finding phone number</title>
+</head>
+<body>
+<script>
+    let arr = ['103241234213', '01672626136', '0372626136'];
+
+    function checkViettelNumber(arr) {
+        let phoneNumber = /^[0][3][2-9][0-9]{7}$/;
+        let phoneNumber2 = /^[0][9][6-8][0-9]{7}$/;
+        let phoneNumber3 = /^[0][8][6][0-9]{7}$/;
+
+        for (i = 0; i < arr.length; i++) {
+            if (phoneNumber.test(arr[i]) || phoneNumber2.test(arr[i]) || phoneNumber3.test(arr[i])) {
+                return arr[i];
+            }
+        }
+    }
+
+
+    console.log(checkViettelNumber(arr) + " is from Viettel provider");
+
+</script>
+</body>
+</html>
